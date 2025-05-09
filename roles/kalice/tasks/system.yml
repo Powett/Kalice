@@ -22,20 +22,6 @@
     enabled: true
     masked: no
 
-- name: Download The Ultimate vimrc
-  ansible.builtin.git:
-    repo: 'https://github.com/amix/vimrc.git'
-    dest: /opt/vim_runtime
-    depth: 1
-
-- name: Install The Ultimate vimrc
-  ansible.builtin.shell: sh /opt/vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
-
-- name: Set vim as default editor
-  community.general.alternatives:
-    name: editor
-    path: /usr/bin/vim.basic
-
 - name: Download hashcat rules
   ansible.builtin.get_url:
     url: "{{ item.url }}"
